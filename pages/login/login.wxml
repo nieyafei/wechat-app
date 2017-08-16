@@ -1,0 +1,78 @@
+<!-- 登录页面 -->
+<import src="../../common/template.wxml" />
+<template is="showToast" data="{{showToast: showToast}}" />
+<view class="login_cons">
+  <view class="login_nav">
+    <text>欢迎来到科学家在线</text>
+  </view>
+  <view class="section tab_nav">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item flex-center {{activeP==1?'true':''}}" data-tabId="1" bindtap="chooseTab">密码登录</view>
+      <view class="flex-item flex-center {{activeP==2?'true':''}}" data-tabId="2" bindtap="chooseTab">验证码登录</view>
+    </view>
+  </view>
+
+  <view class="form_cons">
+      <view class="weui-cells weui-cells_after-title form_input no_bor_bottom">
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">手机号</view>
+              </view>
+              <view class="weui-cell__bd pos_clear">
+                  <input class="weui-input" type="number" placeholder="请输入手机号" bindinput="mobileInput" value="" placeholder-style="color:#b2b2b2;"/>
+                  <!--<view bindtap="clearInput" hidden="{{!isClearShow}}" class="iconfont icon-chazi"></view>-->
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input" hidden="{{!(activeP==1?'true':'')}}">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">密码</view>
+              </view>
+              <view class="weui-cell__bd pos_clear pass_res">
+                  <!-- {{!passType?'password':'text'}} -->
+                  <input type="password" class="weui-input" placeholder="请输入密码" bindinput="passwordInput" placeholder-style="color:#b2b2b2;"/>
+                  <!--<view class="input_pa" bindtap="changePass"><image src="/images/{{!passType?'n':''}}see.png" /></view>-->
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input" hidden="{{!(activeP==2?'true':'')}}">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">验证码</view>
+              </view>
+              <view class="weui-cell__bd pos_clear res_posi">
+                  <input class="weui-input" placeholder="请输入验证码" bindinput="codeInput" value="" placeholder-style="color:#b2b2b2;"/>
+                  <text bindtap="sendCode" class="send_code {{sendFlag?'sending':''}}">{{sendText}}</text>
+              </view>
+          </view>
+      </view>
+  </view>
+
+
+    <!--<view class="section">
+      <input type="text" placeholder="请输入手机号或邮箱" bindinput="mobileInput" name="mobile" auto-focus />
+    </view>
+    <view class="login_item {{activeP==1?'true':''}}">
+      <view class="section">
+        <input type="password" placeholder="请输入密码" name="password" bindinput="passwordInput"/>
+      </view>
+    </view>
+    <view class="login_item {{activeP==2?'true':''}}">
+      <view class="section">
+        <input type="text" placeholder="请输入图片验证码" name="imageCode" bindinput="imageCodeInput"/>
+        <image bindtap="refreshCode" src="{{codeImage}}"></image>
+      </view>
+      <view class="section">
+        <input type="text" placeholder="请输入验证码" name="verifyCode" bindinput="codeInput"/>
+        <text bindtap="sendCode">{{sendText}}</text>
+      </view>
+    </view>-->
+    <view class="forget_pass">
+      <navigator url="/pages/user/editpassword/edit-password?type=0" hover-class="none">
+        忘记密码
+      </navigator>
+    </view>
+    <view class="cs">
+      <view class="btn_sub" bindtap="butLogin">登录</view>
+    </view>
+</view>
+<navigator url="/pages/register/register" open-type="redirect" hover-class="none" class="re_link">
+    没有科学家在线账户？ 去注册
+</navigator>

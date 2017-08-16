@@ -1,0 +1,6 @@
+/* list.wxss */
+.com_content .content{position: relative;}
+.bt_more{float: right;}
+.com_content .content.down{padding-right:35px;}
+.com_content .content.down .bt_more{position: absolute;right:0;top:14px;}
+

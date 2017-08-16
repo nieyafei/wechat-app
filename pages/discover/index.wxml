@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<import src="../../common/template.wxml"/>
+<view class="find_cons pull_page_bottom">
+    <!-- 发现 -->
+     
+</view>
+<template is="tabBar" data="{{tabbarInit}}"/>

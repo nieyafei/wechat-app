@@ -1,0 +1,15 @@
+/**index.wxss**/
+page{background-color: #fff;}
+.login_nav{text-align: center;color: #1f6b9b;font-size:20px;padding: 40px 0 30px;}
+.cs{padding: 20px;}
+.cs .btn_sub{border-radius: 5px;-webkit-border-radius: 5px;}
+.form_cons{border-bottom: 1px solid #ededed}
+.re_link{text-align: center;color:#1f6b9b;font-size: 14px;}
+.forget_pass{text-align: right;color:#3091f5;font-size: 14px;margin-top: 10px;padding-right: 18px;}
+.tab_nav{margin-bottom: 24px;}
+.tab_nav .flex-item{width: 130px;height: 40px;line-height: 40px;text-align: center;font-size: 16px;border:1px solid #b2b2b2;color: #b2b2b2;}
+.flex-wrp{text-align: center;width: 264px;margin: 0 auto;}
+.tab_nav .flex-item:first-child{border-radius:5px 0 0 5px;-webkit-border-radius:5px 0 0 5px;border-right:none;}
+.tab_nav .flex-item:last-child{border-radius:0px 5px 5px 0;-webkit-border-radius:0px 5px 5px 0;border-left:none;}
+.tab_nav .flex-item.true{color: #fff;background-color: #1f6b9b;border-color:#1f6b9b;}
+

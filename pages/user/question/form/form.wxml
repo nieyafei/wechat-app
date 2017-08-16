@@ -1,0 +1,43 @@
+<!--form.wxml-->
+<import src="../../../../common/template.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}" />
+<block wx:if="{{!pageOther.isShow}}">
+    <view class="form_cons fix_bot_btn">
+        <view class="weui-cells weui-cells_after-title form_input no_bor_bottom">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">标题</view>
+                </view>
+                <view class="weui-cell__bd pos_clear">
+                    <input class="weui-input" placeholder="请输入标题" bindinput="inputTitle" value="{{invalVlaue}}" placeholder-style="color:#b2b2b2;" bindblur="inputBlur" bindfocus="inputFocus"/>
+                    <view bindtap="clearInput" hidden="{{!isClearShow}}" class="iconfont icon-chazi"></view>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input box_top">
+                <view class="weui-cell__hd">
+                    <view class="weui-label weui-label2">问题描述</view>
+                </view>
+                <view class="weui-cell__bd cell_textarea" bindtap="textFoucs">
+                    <textarea class="weui-textarea" placeholder="" focus="{{textFocus}}" auto-height style="height:5em" bindinput="inputContent" maxlength="200"/>
+                    <view class="weui-textarea-counter">可输入200字以内的问题描述</view>
+                </view>
+            </view>
+            
+            <view class="weui-cell weui-cell_input box_top box_top2" >
+                <view class="weui-cell__bd" wx:if="{{isField}}">
+                    <view class="weui-label">领域</view>
+                    <template is="field" data="{{fieldArray}}" />
+                </view>
+            </view>
+            <view class="check_public" bindtap="changePublic">
+                <image src="/images/gx{{isPublic?'active':''}}.png"/>
+                公开问题，能得到更多专家回复
+            </view>
+            <view bindtap="submitForm" class="btn_sub">提交问题</view>
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

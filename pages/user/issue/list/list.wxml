@@ -1,0 +1,12 @@
+<!--list.wxml-->
+<import src="../../../../common/template.wxml"/>
+<block wx:if="{{!pageOther.isShow}}">
+<view class="question_cons">
+    <template is="issueList" data="{{...pushData.other}}" />
+    <template is="footLoading" data="{{...footLoading}}"/>
+</view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

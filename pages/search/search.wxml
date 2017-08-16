@@ -1,0 +1,23 @@
+<!--search.wxml-->
+<import src="../../common/template.wxml"/>
+
+<view class="page__bd search_fixed">
+    <template is="searchInputCom" data="{{inputShowed,inputVal,placeholderSearch,isFacus}}"/>
+    <template is="searchHistory" data="{{historyShowed,searchHistoryArray}}"/>
+    <view class="" wx:if="{{!pageOther.isShow}}">
+        <!-- 专家列表 -->
+        <template is="expertList" data="{{...pushData.expert,type:1,inputVal}}"/>
+        <!-- 问题列表 -->
+        <template is="questionList" data="{{...pushData.question,type:1,inputVal}}"/>
+        <!-- 案例列表 -->
+        <template is="caseList" data="{{...pushData.case,type:1,inputVal}}"/>
+        <!-- 技术列表 -->
+        <template is="techList" data="{{...pushData.tech,type:1,inputVal}}"/>
+        <!-- 观点列表 -->
+        <template is="opinionList" data="{{...pushData.opinion,type:1,inputVal}}"/>
+    </view>
+    <view wx:else>
+        <!-- 空页面or未登录 -->
+        <template is="pageOther" data="{{...pageOther}}"/>    
+    </view>
+</view>

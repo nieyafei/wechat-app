@@ -1,0 +1,221 @@
+<!--info.wxml-->
+<import src="../../../../common/template.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}" />
+<template is="modelLogin" data="{{...modelLogin,expertinfo}}"/>
+<block wx:if="{{!pageOther.isShow}}">
+    <view class="expert_info_cons fix_bot_btn ">
+        <view class="expert_header">
+            <view class="follow">
+                <text bindtap="followExpert">{{expertinfo.follow?"已关注":"关注"}}</text>
+            </view>
+            <view class="info">
+                <block wx:if="{{expertinfo.portrait}}">
+                    <image src="{{expertinfo.portrait}}" />
+                </block>
+                <block wx:else>
+                    <span class="iconfont icon-touxiang"></span>
+                </block>
+                <text>{{expertinfo.name}}</text>
+                <text class="org">{{expertinfo.title}} | {{expertinfo.org}}</text>
+            </view>
+        </view>
+        <!-- 个人简介 -->
+        <view class="floor_cons">
+            <view class="title">
+                <text class="lines"></text>
+                <view class="name">
+                    个人简介
+                </view>
+                <text class="lines"></text>
+            </view>
+            <view class="infos {{moreFlag?'active':''}}">
+                {{expertinfo.resume}}
+            </view>
+            <view class="more_info" bindtap="bindMore">
+                {{moreFlag?"点击收起":"点击查看更多"}}
+            </view>
+        </view>
+        <view class="hei_line"></view>
+        <!-- 个人简介 -->
+        <view class="floor_cons">
+            <view class="title">
+                <text class="lines"></text>
+                <view class="name">
+                    学术概览
+                </view>
+                <text class="lines"></text>
+            </view>
+            <view class="xs_gl">
+                <view class="ls box-size">
+                    总成果数 {{expertinfo.ach_num}}  
+                </view>
+                <view class="ls box-size">
+                    被引频次 {{expertinfo.cited_num}}
+                </view>
+                <view class="ls box-size">
+                    H因子 {{expertinfo.h_index}} 
+                </view>
+                <!--<view class="ls box-size">
+                    高被引论文 1
+                </view>
+                <view class="ls box-size box-size2">
+                    SCI/SSCI论文数 3
+                </view>-->
+                <view class="clear"></view>              
+            </view>
+            
+        </view>
+        <block wx:if="{{expertinfo.caseDetails.length>0}}">
+        <view class="hei_line"></view>
+        <!-- 产品案例 -->
+        <view class="floor_cons">
+            <view class="title">
+                <text class="lines"></text>
+                <view class="name">
+                    产研案例
+                </view>
+                <text class="lines"></text>
+            </view>
+            <block wx:if="{{expertinfo.caseDetails.length>0}}">
+                <block wx:for="{{expertinfo.caseDetails}}" wx:key="id">
+                    <view class="case">
+                        <text class="sp">{{item.title}}</text>
+                        <text class="sp sp2 col">
+                            <text>案例描述：</text>{{item.content}}
+                        </text>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="">
+                    <view class="no_cons">
+                        <image src="/images/null.png" />
+                        暂无内容
+                    </view>
+                </view>
+            </block>
+            
+            <!--<view class="more_info">
+                更多案例
+            </view>-->
+        </view>
+        </block>
+        <block wx:if="{{expertinfo.projects.length>0}}">
+        <view class="hei_line"></view>
+        <!-- 个人简介 -->
+        <view class="floor_cons">
+            <view class="title">
+                <text class="lines"></text>
+                <view class="name">
+                    科研项目
+                </view>
+                <text class="lines"></text>
+            </view>
+            <block wx:if="{{expertinfo.projects.length>0}}">
+                <block wx:for="{{expertinfo.projects}}" wx:key="pid">
+                    <view class="case">
+                        <text class="sp">{{item.title}}</text>
+                        <text class="sp sp2 col">
+                            <text>项目描述：</text>{{item.content}}
+                        </text>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="">
+                    <view class="no_cons">
+                        <image src="/images/null.png" />
+                        暂无内容
+                    </view>
+                </view>
+            </block>
+            
+        </view>
+        </block>
+        <block wx:if="{{expertinfo.technologyDetails.length>0}}">
+        <view class="hei_line"></view>
+        <!-- 技术 -->
+        <view class="floor_cons">
+            <view class="title">
+                <text class="lines"></text>
+                <view class="name">
+                    技术成果
+                </view>
+                <text class="lines"></text>
+            </view>
+            <block wx:if="{{expertinfo.technologyDetails.length>0}}">
+                <block wx:for="{{expertinfo.technologyDetails}}">
+                    <view class="case">
+                        <text class="sp">{{item.title}}</text>
+                        <text class="sp sp2 col">
+                            <text>技术描述：</text>{{item.describe}}
+                        </text>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="">
+                    <view class="no_cons">
+                        <image src="/images/null.png" />
+                        暂无内容
+                    </view>
+                </view>
+            </block>
+            
+            <!--<view class="more_info">
+                更多案例
+            </view>-->
+        </view>
+        </block>
+        <block wx:if="{{expertinfo.opinionDetails.length>0}}">
+        <view class="hei_line"></view>
+        <!-- 观点 -->
+        <view class="floor_cons">
+            <view class="title">
+                <text class="lines"></text>
+                <view class="name">
+                    专家观点
+                </view>
+                <text class="lines"></text>
+            </view>
+            <block wx:if="{{expertinfo.opinionDetails.length>0}}">
+                <block wx:for="{{expertinfo.opinionDetails}}">
+                    <view class="case">
+                        <text class="sp">{{item.title}}</text>
+                        <text class="sp sp2 col">
+                            <text>观点描述：</text>{{item.content}}
+                        </text>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="">
+                    <view class="no_cons">
+                        <image src="/images/null.png" />
+                        暂无内容
+                    </view>
+                </view>
+            </block>
+            
+            <!--<view class="more_info">
+                更多案例
+            </view>-->
+        </view>
+        </block>
+
+        <view class="hei_line"></view>
+        <view class="btn_sub">
+            <view style="width:100%" data-url="/pages/user/question/form/form?expertUid={{expertUid}}&name={{expertinfo.name}}&domain={{expertinfo.domain}}" class="btn_left" bindtap="toLoginPage">
+                向专家咨询
+            </view>
+            <!--<view data-url="/pages/user/calls/calls?expertUid={{expertUid}}&domain={{expertinfo.domain}}" class="btn_right" bindtap="toLoginPageModel">
+                <text class="wi_line"></text>
+                预约电话咨询
+            </view>-->
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

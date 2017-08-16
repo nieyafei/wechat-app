@@ -1,0 +1,13 @@
+<!--list.wxml-->
+<import src="../../../../common/template.wxml"/>
+<view wx:if="{{!pageOther.isShow}}">
+    <!-- 正文 -->
+    <view class="pay_cons">
+        <template is="userPays" data="{{...pushData.other}}" />
+        <template is="footLoading" data="{{footLoading:footLoading}}"/>
+    </view>
+</view>
+<view wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</view>

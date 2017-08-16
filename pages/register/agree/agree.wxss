@@ -1,0 +1,5 @@
+/* agree.wxss */
+page{background-color: #fff;}
+.agree_cons{font-size: 12px;padding: 14px;color:#b2b2b2;}
+.agree_cons .h1{font-size: 16px;color: #1a1a1a}
+.agree_cons .h2{font-size: 14px;color: #1a1a1a}

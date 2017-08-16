@@ -1,0 +1,92 @@
+<!--info.wxml-->
+<import src="../../../../common/template.wxml"/>
+<block wx:if="{{!pageOther.isShow}}">
+<view class="info_cons">
+    <!-- 进度条 -->
+    <view class="iss_progress">
+        <view class="pro_tab weui-flex">
+            <view class="weui-flex__item {{issue.current_status>-1 ?'active':''}}">
+                <view class="line"></view>
+                <view class="icons">
+                    <span class="iconfont icon-success"></span>
+                </view>
+                <view class="tit">发布成功</view>
+            </view>
+            <view class="weui-flex__item {{issue.current_status>0 ?'active':''}}">
+                <view class="line"></view>
+                <view class="icons">
+                    <span class="iconfont icon-wancheng"></span>
+                </view>
+                <view class="tit">需求确认</view>
+            </view>
+            <view class="weui-flex__item {{issue.current_status>1 ?'active':''}}">
+                <view class="line"></view>
+                <view class="icons">
+                    <span class="iconfont icon-Tripartite"></span>
+                </view>
+                <view class="tit">三方通话</view>
+            </view>
+            <view class="weui-flex__item {{issue.current_status>2 ?'active':''}}">
+                <view class="line"></view>
+                <view class="icons f4">
+                    <span class="iconfont icon-540xuqiuduijiedan"></span>
+                </view>
+                <view class="tit">需求对接</view>
+            </view>
+        </view>
+    </view>
+    <view class="hei_line"></view>
+    <view class="com_content form_cons">
+        <view class="title">
+            {{issue.title}}
+        </view>
+        <view class="content">
+            发布时间：{{issue.create_time}}
+        </view>
+        <view class="content content2">
+            <text class="">{{issue.content}}</text>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">领域</view>
+            </view>
+            <view class="weui-cell__bd">
+                <view class="field_list">
+                    <view class="li active">
+                        <text>{{issue.domainName}}</text>
+                    </view>
+                </view>
+                
+            </view>
+        </view>
+    </view>
+    <view class="hei_line"></view>
+    <!-- 进度详情 -->
+    <view class="issue_jd">
+        <view class="name_title">
+            进度详情
+        </view>
+        <block wx:if="{{issue.actions.length>0}}">
+            <block wx:for="{{issue.actions}}">
+                <view class="iss_pro_lis">
+                    {{item.create_time}} {{item.action}}
+                </view>
+            </block>
+        </block>
+        <block wx:else>
+            <!-- 未支付 -->
+            <view class="issue_nopay">
+                <view class="cor">一</view> 需求尚未发布<view class="cor"><!--<view bindtap="toPay">前往支付</view>--> 一</view>
+            </view>
+        </block>
+    </view>
+    <view class="expert_foot_tips">
+        <text>有任何疑问，请联系客服</text>
+        <!--<text>1100万华人专家，大数据精准匹配</text>-->
+    </view>
+</view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

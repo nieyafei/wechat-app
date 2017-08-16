@@ -1,0 +1,10 @@
+/* issue.wxss */
+page{background-color: #fff;}
+.form_cons .form_input .weui-cell{padding: 26px 14px;}
+.form_cons .form_input .weui-label2{padding-top: 3px;}
+.weui-cell__bd text{font-size: 14px;}
+.field_list{margin-top: -5px;}
+.header_forms{color:#1a1a1a;font-size: 14px;padding: 14px;}
+.header_forms text{display: block;}
+.header_forms .icon_h1{padding:22px 0 0 0;}
+.header_forms .icon_h1 image{width: 16px;height: 16px;vertical-align: middle;margin-top: -3px;}

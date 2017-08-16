@@ -1,0 +1,16 @@
+<!--question.wxml-->
+<text>question.wxml</text>
+<view class="">
+    <view>
+        清楚的描述问题，能得到更准确的专家回复哦。
+        请参考以下模板
+    </view>
+    <view>
+        问题模板
+        标题：CCD高速平面扫描和拼图
+        问题描述：我们的产品很多需要在平面方向上做尺寸测量，要求测量误差在0.02mm以内，而且通常为在线测量，所以速度要求通常在5秒以内，现在通用的办法是用CCD拍照然后进行即时图像处理和基于图像处理的测量，但是因为CCD相机的视场有限，如果产品大过相机的视场那就需要移动相机拍照然后将几张照片拼接起来还原
+    </view>
+    <navigator url="/pages/user/question/form/form">
+        <text>知道了，去提问</text>
+    </navigator>
+</view>

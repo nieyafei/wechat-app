@@ -1,0 +1,191 @@
+<!--user.wxml-->
+<import src="../../common/template.wxml"/>
+<view class="usercenter_cons pull_page_bottom">
+    <view class="user_info">
+        <block wx:if="{{user && user.token}}">
+            <navigator url="/pages/user/userinfo/user-info" hover-class="none" class='center_header'>
+                <view class="weui-flex flex-center">
+                    <view class="box-center">
+                        <image src="{{userInfo.avatarUrl}}" mode="widthFix"/>
+                    </view>
+                    <view class="weui-flex__item">
+                        <view class="placeholder">
+                            <text class="title name">{{user.full_name}}</text>
+                            <text class="user_posi">{{user.position}}|{{user.org_name}}</text>
+                        </view>
+                    </view>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                </view>
+            </navigator>
+        </block>
+        <block wx:else>
+            <view class="center_header">
+                <view class="weui-flex flex-center">
+                    <view class="box-center">
+                        <image src="{{userInfo.avatarUrl}}" mode="widthFix" style="width:54px;"/>
+                    </view>
+                    <view class="weui-flex__item">
+                        <view class="placeholder p_cen">
+                            <navigator url="/pages/register/register" hover-class="none" class="link">
+                                注册
+                            </navigator>
+                            <navigator url="/pages/login/login" hover-class="none" class="link">
+                                登录
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    
+    <view class="weui-flex flex-center line_menus">
+        <navigator url="/pages/user/expert/list" hover-class="none" class="weui-flex__item">
+            <view class="placeholder">
+                <image src="/images/uexpert.png" mode="aspectFit"/>
+                <text class="name">我关注的专家</text>
+            </view>
+        </navigator>
+        <navigator url="/pages/user/issue/list/list" hover-class="none" class="weui-flex__item">
+            <view class="placeholder">
+                <image src="/images/uissue.png" mode="aspectFit"/>
+                <text class="name">我发布的需求</text>
+            </view>
+        </navigator>
+    </view>
+
+    <view class="user_menu">
+        <!--<navigator url="/pages/user/issue/list/list" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/uissue.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">我发布的需求</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>-->
+        
+        <!--<navigator url="/pages/user/calls/list/list" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/uphone.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">我的电话咨询</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>-->
+
+        <!--<navigator url="/pages/user/collection/index" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/follow.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">我的收藏</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+                
+            </view>
+        </navigator>-->
+
+        <navigator url="/pages/user/field/field?type=1" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/ufield.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">订阅的领域</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+
+        <!--<navigator url="/pages/user/pay/list/list" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/upay.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">付费记录</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>-->
+
+        <!--<navigator url="" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/sdata.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">企业大数据诊断</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>-->
+
+        <!--<navigator url="/pages/user/about/about" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/uabout.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">关于科学家在线</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>-->
+
+        <navigator url="/pages/user/setting/setting" hover-class="none" class="one_line">
+            <view class="weui-flex flex-center">
+                <view class="box-center">
+                    <image src="/images/uset.png" mode="aspectFit" class="icon_ft"/>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                    <text class="name">设置</text>
+                    <view class="box-center">
+                        <span class="iconfont icon-jiantoul"></span>
+                    </view>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+        
+    </view>
+</view>
+<template is="tabBar" data="{{tabbarInit}}"/>

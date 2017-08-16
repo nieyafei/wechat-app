@@ -1,0 +1,11 @@
+/* result.wxss */
+.result_cons{}
+.title_header{background-color: #fff;
+    padding: 23px 14px 0;font-size: 16px;color: #1a1a1a;
+}
+.title_header .col{color: #1f6b9b;}
+.title_header .infos{
+    padding:22px 0 14px 0;color: #b2b2b2;font-size: 15px;
+}
+
+

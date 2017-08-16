@@ -1,0 +1,6 @@
+/* field.wxss */
+page{background-color: #fff}
+.field_cons{position: relative;padding:4rem 20px 20px 20px;}
+.btn_sub{border-radius:5px;-webkit-border-radius:5px;margin-top: 20px;}
+.head_info{font-size: 14px;color: #b2b2b2;line-height: 1.6;margin-bottom: 10px;}
+.next{position: absolute;top:20px;right: 20px;font-size: 17px;color: #1f6b9b;}

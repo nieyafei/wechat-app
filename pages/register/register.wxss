@@ -1,0 +1,12 @@
+/* register.wxss */
+.login_nav{text-align: center;color: #1a1a1a;font-size:20px;padding: 40px 0 30px;}
+.cs{padding: 20px;}
+.cs .btn_sub{border-radius: 5px;-webkit-border-radius: 5px;}
+.re_link{text-align: center;color:#1f6b9b;font-size: 14px;}
+.weui-cells::before{border-top:none;}
+
+.agree_change{padding: 9px 14px 0;font-size: 14px;}
+.agree_change .bn{display: inline-block;color:#1a1a1a;}
+.agree_change .bn image{width: 20px;height: 20px;vertical-align: middle;margin-top: -3px;margin-right: 10px;}
+.agree_change .ls{color: #3091f5;margin-left: 10px;display: inline-block;}
+

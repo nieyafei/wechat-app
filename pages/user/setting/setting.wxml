@@ -1,0 +1,19 @@
+<!--setting.wxml-->
+<import src="../../../common/template.wxml"/>
+<block wx:if="{{!pageOther.isShow}}">
+    <view class="line_links">
+        <navigator url="/pages/user/editpassword/edit-password?type=1" hover-class="none">
+            <text>修改密码</text>
+            <span class="iconfont icon-jiantoul"></span>
+        </navigator>
+    </view>
+    <view class="cs">
+        <view class="btn_sub" bindtap="butLoginOut">
+            退出登录
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

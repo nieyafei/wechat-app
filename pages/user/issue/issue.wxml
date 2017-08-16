@@ -1,0 +1,46 @@
+<!--issue.wxml-->
+<view class="form_cons fix_bot_btn">
+    <view class="header_forms">
+        <text>清楚地描述需求，能得到更准确的专家回复哦。</text>
+        <text>请参考以下模板:</text>
+        <view class="icon_h1">
+            <image src="/images/mb.png" />
+            需求模板
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title form_input no_bor_bottom">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">标题</view>
+            </view>
+            <view class="weui-cell__bd">
+                <text>企业废水处理寻求解决方案</text>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input box_top">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-label2">需求描述</view>
+            </view>
+            <view class="weui-cell__bd">
+                <text>本企业在生产过程中产出的废水无法通过大规模处理完成，希望可以在技术上寻求小型的、分散的污水处理解决方案。</text>
+            </view>
+        </view>
+        
+        <view class="weui-cell weui-cell_input box_top box_top2">
+            <view class="weui-cell__hd">
+                <view class="weui-label">领域</view>
+            </view>
+            <view class="weui-cell__bd">
+                <view class="field_list">
+                    <view class="li active">
+                        <text>节能环保</text>
+                    </view>
+                </view>
+                
+            </view>
+        </view>
+    </view>
+    <navigator class="btn_sub" url="/pages/user/issue/form/form">
+        <text>知道了，去发布</text>
+    </navigator>
+</view>

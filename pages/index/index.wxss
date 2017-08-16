@@ -1,0 +1,54 @@
+/**index.wxss**/
+.index_nav_lis{
+  padding: 0;
+}
+.index_nav_lis .li{
+  padding:15.5px 15px;border-bottom: 1px solid #f1f1f1;
+}
+.index_nav_lis .li .title{
+}
+.index_nav_lis .weui-flex__item{
+  padding-left: 14px;
+}
+.index_nav_lis .li .info{
+}
+
+.index_nav_lis .li .te_icon{
+  font-size: 12px;color: #fff;display: inline-block;padding:2px 6px;background-color: #acb9d0;border-radius: 10px;-webkit-border-radius:10px;margin:-3px 0 0 10px;vertical-align: middle;
+}
+.index_nav_lis .li .jt_icon .icon-jiantou{color:#aaa;font-size:13px;}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.header_message{
+  width: 30px;height:30px;position: relative;
+}
+.header_message image{width:24px;height:24px;margin:3px;}
+.header_message .number{
+  right: -10px;
+}
+
+.index_nav_lis .h_icons{
+  width:45px;height:45px;vertical-align: middle;
+}
+.load_bgs{background-color: #fff;}
+.foot_more .more_expert{display: block;width:180px;border:1px solid #1f6b9b;color:#1f6b9b;font-size:14px;border-radius:3px;-webkit-border-radius:3px;margin:15px auto;text-align: center;height:30px;line-height:30px;}

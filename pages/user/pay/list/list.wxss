@@ -1,0 +1,6 @@
+/* list.wxss */
+page{background-color: #fff;}
+.pays_list_cons{padding:0 0 0 14px;}
+.weui-flex__item{padding-left: 14px;}
+.wu_flex{border-bottom: 1px solid #ededed;padding: 14px 14px 14px 0;}
+.ri_text{color:#6c6c6c;font-size: 18px;}

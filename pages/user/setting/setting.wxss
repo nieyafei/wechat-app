@@ -1,0 +1,3 @@
+/* setting.wxss */
+.cs{padding: 20px;}
+.cs .btn_sub{border-radius: 5px;-webkit-border-radius: 5px;}

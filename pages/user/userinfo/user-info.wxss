@@ -1,0 +1,6 @@
+/* user-info.wxss */
+.weui-cells::before{border-top:none;}
+.weui-cell::before{border-top-color:#ededed;}
+.image{text-align: center;padding:18px;}
+.form_btn{padding: 34px 19px;}
+.form_btn .btn_sub{border-radius:4px;-webkit-border-radius:4px;}

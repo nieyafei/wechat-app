@@ -1,0 +1,20 @@
+<!--calls.wxml-->
+<import src="../../../common/template.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}" />
+<block wx:if="{{!pageOther.isShow}}">
+    <view class="form_cons fix_bot_btn">
+        <view class="weui-cells weui-cells_after-title form_input no_bor_bottom">
+            <view class="weui-cell weui-cell_input box_top">
+                <view class="weui-cell__bd" bindtap="focusText">
+                    <textarea class="weui-textarea" placeholder="" focus="{{focus}}" auto-focus auto-height bindinput="inputContent" maxlength="200"/>
+                    <view class="weui-textarea-counter">可输入200字以内的问题描述</view>
+                </view>
+            </view>
+            <view bindtap="submitForm" class="btn_sub">支付（58元），并预约</view>
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

@@ -1,0 +1,11 @@
+/* result.wxss */
+page{background-color: #fff;}
+.pay_result .tips{text-align: center;}
+.pay_result .tips image{
+    width: 60px;height: 60px;margin-top:35px; 
+}
+.pay_result .tips text{display: block;font-size: 16px;color: #1f6b9b;}
+.pay_result .content{padding: 45px 14px 49px;font-size: 16px;color: #1a1a1a;line-height: 1.4;}
+.pay_result .content text{display: block;}
+
+.pay_result .btn{display: block;width: 180px;color:#fff;font-size: 16px;height:45px;line-height:45px;background-color: #1f6b9b;border-radius:30px;-webkit-border-radius:30px;text-align: center;margin: 0 auto;}

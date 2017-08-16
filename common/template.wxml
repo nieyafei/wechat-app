@@ -1,0 +1,691 @@
+<!-- 公用组件模板  -->
+<!-- 错误信息提示 -->
+<template name="showToast">
+    <block wx:if="{{showToast.isShow? showToast.isShow: false}}">
+        <view class="toast-bg" wx:if="{{showToast.mask==false? false : true}}"></view>
+        <view class="toast-center">
+            <view class="toast">
+                <image class="toast-icon" src="{{showToast.icon}}" mode="scaleToFill" wx:if="{{showToast.icon}}" />
+                <text class="toast-text">{{showToast.title}}</text>
+            </view>
+        </view>
+    </block>
+</template>
+<template name="loadings">
+    <view class="tips {{footLoading.loading ? 'hide': ''}}">
+        <image src="../image/loading.gif" mode="aspectFit" />
+        <text>{{footLoading.loadtxt}}...</text>
+    </view>
+    <loading hidden="{{footLoading.loading}}">
+        {{loadtxt}}...
+    </loading>
+</template>
+
+<template name="footLoading">
+    <view wx:if="{{footLoading.isLoading}}" class="load_bgs">
+        <view class="foot_loading">
+            <!--<icon type="waiting"></icon>-->
+            <view class="weui-loadmore">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">{{footLoading.text?footLoading.text:"正在加载"}}</view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <!-- 数据异常 -->
+        <block wx:if="{{type==1}}">
+            <view class="connect_foot" bindtap="retryOnload">
+                <text class="iconfont icon-retry"></text>
+                <text>数据异常，点击重试</text>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="foot_info">
+                <view class="not_more">
+                    {{footLoading.text?footLoading.text:"暂无数据"}}
+                </view>
+            </view>
+        </block>
+    </view>
+    
+</template>
+
+<!-- login弹层 -->
+<template name="modelLogin">
+    <view class="model_cons" hidden="{{!flag}}">
+        <view class="model_zw">
+            <view class="cons">
+                <block wx:if="{{type==1}}">
+                    <view class="tit hot_tit">
+                        <view class="h1">需求服务 ￥200/次</view>
+                        <view class="inli">算法智能匹配推送2000位专家，精选4位有意合作专家，安排每位专家时长10分钟的三方通话，全程独立顾问对接。</view>
+                    </view>
+                    <navigator url="/pages/user/issue/issue" hover-class="none" class="links links_act">
+                        发布需求
+                    </navigator>
+                </block>
+                <block wx:elif="{{type==2}}">
+                    <view class="tit hot_tit">
+                        <view class="h1">电话咨询 ￥58/次</view>
+                        <view class="inli">科学家在线将为您联系{{expertinfo.name}}{{expertinfo.title}}，进行每位专家时长10分钟的三方通话。</view>
+                    </view>
+                    <navigator url="{{url}}" hover-class="none" class="links links_act">
+                        继续预约
+                    </navigator>
+                </block>
+                <block wx:else>
+                    <view class="tit">
+                        注册或登录后，获取更多权限。
+                    </view>
+                    <navigator url="/pages/register/register" hover-class="none" class="links links_act">
+                        注册
+                    </navigator>
+                    <navigator url="/pages/login/login" hover-class="none" class="links">
+                        登录
+                    </navigator>
+                </block>
+            </view>
+            <view class="close_model" bindtap="closeModel">
+                <span class="iconfont icon-chazi"></span>
+            </view>
+        </view>
+    </view>
+    <view class="model_bgs" hidden="{{!flag}}"></view>
+</template>
+
+<!-- 图片轮播 -->
+<template name="swiper">
+    <view wx:if="{{list.length>0}}" class="page-section page-section-spacing swiper {{className}}">
+        <swiper indicator-dots="{{indicatorDots}}" class="swiper_lis" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{height}}px">
+            <block wx:for="{{list}}" wx:key="uri">
+                <swiper-item>
+                    <view class="swiper-item">
+                        <navigator url="{{item.url}}" class="link">
+                            <image src="{{item.pic}}" bindload="loadImage" mode="widthFix"/>
+                            <text class="tis" wx:if="{{item.text.length>0}}">{{item.text}}</text>
+                        </navigator>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</template>
+
+<!-- 专家列表模板 -->
+<template name="expertList">
+    <view class="expert_list pages_whilt" wx:if="{{list.length>0}}">
+        <view class="list_header" wx:if="{{type==1}}">
+            专家列表
+        </view>
+        <view wx:for="{{list}}" wx:key="uid" class="expert_li">
+            <navigator url="/pages/user/expert/info/info?uid={{item.uid}}" hover-class="none">
+                <view class="weui-flex flex-center lis wu_flex">
+                    <view class="user_image">
+                        <block wx:if="{{item.coverPic}}">
+                            <image src="{{item.coverPic}}" mode="aspectFit"/>
+                        </block>
+                        <block wx:else>
+                            <span class="iconfont icon-touxiang"></span>
+                        </block>
+                    </view>
+                    <view class="weui-flex__item">
+                        <view class="placeholder">
+                            <text class="title">
+                            <block wx:if="{{item.seStr}}">
+                                <block wx:for="{{item.name}}" wx:for-item="ina" wx:key="str">
+                                    <block wx:if="{{ina.flag}}"><text class="se_color">{{ina.str}}</text></block><block wx:else>{{ina.str}}</block>
+                                </block>
+                            </block><block wx:else>{{item.name}}</block><text class="title_ot">{{item.org}}{{item.title}}</text></text>
+                            <text class="info">{{item.domain}}</text>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+        <block wx:if="{{list.length>1}}">
+            <navigator url="/pages/search/level/level-search?type=e&&key={{inputVal}}" wx:if="{{type==1}}" hover-class="none">
+                查看全部
+            </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 侧滑取消关注的列表  -->
+<template name="expertListContect">
+    <view class="expert_list pages_whilt" wx:if="{{list.length>0}}">
+        <view wx:for="{{list}}" wx:key="uid" class="expert_li" style="{{item.txtStyle}}">
+            <view data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE">
+                <navigator url="/pages/user/expert/info/info?uid={{item.uid}}" hover-class="none">
+                    <view class="weui-flex flex-center lis wu_flex">
+                        <view class="user_image">
+                            <block wx:if="{{item.coverPic}}">
+                                <image src="{{item.coverPic}}" mode="aspectFit"/>
+                            </block>
+                            <block wx:else>
+                                <span class="iconfont icon-touxiang"></span>
+                            </block>
+                        </view>
+                        <view class="weui-flex__item">
+                            <view class="placeholder">
+                                <text class="title text_hidden1">{{item.name}}<text class="title_ot">{{item.org}}{{item.title}}</text></text>
+                                <text class="info">{{item.domain}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="hide_right" bindtap="delItem" data-index="{{index}}" data-id="{{item.uid}}">
+                取消关注
+            </view>
+        </view>
+    </view>
+</template>
+
+<!-- 问题列表模板 -->
+<template name="questionList">
+    <view class="question_list pages_whilt" wx:if="{{list.length>0}}">
+        <view class="list_header" wx:if="{{type==1}}">
+            问题列表
+        </view>
+
+        <view wx:for="{{list}}" wx:key="*this" class="question_li">
+            <navigator url="" hover-class="none">
+                {{item.title}}
+                {{item.content}}
+            </navigator>
+        </view>
+
+        <block wx:if="{{list.length>0}}">
+        <navigator url="/pages/search/level/level-search?type=e&&key={{inputVal}}" wx:if="{{type==1}}" hover-class="none">
+            查看全部
+        </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 案例列表模板 -->
+<template name="caseList">
+    <view class="case_list pages_whilt" wx:if="{{list.length>0}}">
+        <view class="list_header" wx:if="{{type==1}}">
+            案例列表
+        </view>
+
+        <view wx:for="{{list}}" wx:key="*this" class="case_li">
+            <navigator url="" hover-class="none">
+                {{item.title}}
+                {{item.content}}
+            </navigator>
+        </view>
+
+        <block wx:if="{{list.length>0}}">
+            <navigator url="/pages/search/level/level-search?type=c&&key={{inputVal}}" wx:if="{{type==1}}" hover-class="none">
+                查看全部
+            </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 技术列表模板 -->
+<template name="techList">
+    <view class="tech_list pages_whilt" wx:if="{{list.length>0}}">
+        <view class="list_header" wx:if="{{type==1}}">
+            技术列表
+        </view>
+
+        <view wx:for="{{list}}" wx:key="*this" class="tech_li">
+            <navigator url="" hover-class="none">
+                {{item.title}}
+                {{item.describe}}
+            </navigator>
+        </view>
+
+        <block wx:if="{{list.length>0}}">
+            <navigator url="/pages/search/level/level-search?type=t&&key={{inputVal}}" wx:if="{{type==1}}" hover-class="none">
+                查看全部
+            </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 观点列表模板 -->
+<template name="opinionList">
+    <view class="opinion_list pages_whilt" wx:if="{{list.length>0}}">
+        <view class="list_header" wx:if="{{type==1}}">
+            观点列表
+        </view>
+
+        <view wx:for="{{list}}" wx:key="*this" class="opinion_li">
+            <navigator url="" hover-class="none">
+                {{item.title}}
+                {{item.content}}
+            </navigator>
+        </view>
+
+        <block wx:if="{{list.length>0}}">
+            <navigator url="/pages/search/level/level-search?type=o&&key={{inputVal}}" wx:if="{{type==1}}" hover-class="none">
+                查看全部
+            </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 箭头导航 -->
+<template name="navHead">
+    <view class="nav_header pages_whilt">
+        <block wx:if="{{url}}">
+            <navigator url="{{url}}" hover-class="none">
+                <text class="line_sp"></text>
+                <view class="ti_name">{{name}}</view>
+                <view class="rig"><span class="iconfont icon-jiantou"></span></view>
+            </navigator>
+        </block>
+        <block wx:else>
+            <text class="line_sp"></text>
+            <view class="ti_name">{{name}}</view>
+        </block>
+    </view>
+</template>
+
+<!-- 领域模板 -->
+<template name="field">
+    <view class="field_list" wx:if="{{fieldArray.length>0}}">
+        <view class="li {{item.isActive?'active':''}}" wx:for="{{fieldArray}}" wx:key="title" bindtap="changeField" data-id="{{item.id}}">
+            <text>{{item.title}}</text>
+        </view>
+    </view>
+</template>
+<!-- tab-bar -->
+<template name="tabBar">
+    <view class="weui-tabbar" wx:if="{{tabbarInit.length>1}}">
+        <block wx:for="{{tabbarInit}}" wx:key="title">
+            <block wx:if="{{item.isButton}}">
+                <button class="weui-tabbar__item weui-tabbar__item2" hover-class="none" open-type="contact">
+                    <view class="bar_pro">
+                        <image src="{{item.icon}}" mode="scaleToFill" class='weui-tabbar__icon weui-tabbar__icon2'/>
+                        <text class="weui-badge" wx:if="{{item.number>-1}}">{{item.number}}</text>
+                    </view>
+                    <text class="weui-tabbar__label">{{item.title}}</text>
+                </button>
+            </block>
+            <block wx:else>
+                <block wx:if="{{item.isActive}}">
+                    <view class="weui-tabbar__item weui-bar__item_on">
+                        <view class="bar_pro">
+                            <image src="{{item.activeIcon}}" mode="aspectFit" class='weui-tabbar__icon'/>
+                            <text class="weui-badge" wx:if="{{item.number>-1}}">{{item.number}}</text>
+                        </view>
+                        <text class="weui-tabbar__label">{{item.title}}</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <navigator url="{{item.url}}" hover-class="none" class="weui-tabbar__item" open-type="reLaunch">
+                        <view class="bar_pro">
+                            <image src="{{item.icon}}" mode="aspectFit" class='weui-tabbar__icon'/>
+                            <text class="weui-badge" wx:if="{{item.number>-1}}">{{item.number}}</text>
+                        </view>
+                        <text class="weui-tabbar__label">{{item.title}}</text>
+                    </navigator>
+                </block>
+            </block>
+        </block>
+        
+        <!--<navigator url="/pages/index/index?st=1" hover-class="none" class="weui-tabbar__item weui-bar__item_on">
+            <view class="bar_pro">
+                <image src="/images/icon_tabbar.png" class='weui-tabbar__icon'/>
+                <text class="weui-badge">8</text>
+            </view>
+            <text class="weui-tabbar__label">首页</text>
+        </navigator>
+        <navigator url="/pages/index/index?st=1" hover-class="none" class="weui-tabbar__item">
+            <view class="bar_pro">
+                <image src="/images/icon_tabbar.png" class='weui-tabbar__icon'/>
+                <text class="weui-badge">8</text>
+            </view>
+            <text class="weui-tabbar__label">发现</text>
+        </navigator>
+        
+        <navigator url="/pages/user/user-center" hover-class="none" class="weui-tabbar__item">
+            <view class="bar_pro">
+                <image src="/images/icon_tabbar.png" class='weui-tabbar__icon'/>
+                <text class="weui-badge weui-badge_dot"></text>
+            </view>
+            <text class="weui-tabbar__label">我</text>
+        </navigator>-->
+    </view>
+    
+</template>
+
+<!-- 无记录页面和登录失效页面 （type==1）-->
+<template name="pageOther">
+    <view wx:if="{{type==1}}">
+        <view class="page_login">
+            <view class="sod">
+                <text class="iconfont icon-no_Login"></text>
+                <text>登录后可查看记录</text>
+                <navigator url="/pages/register/register" hover-class="none" class="lins">注册</navigator>
+                <navigator url="/pages/login/login" hover-class="none" class="lins linsa">登录</navigator>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{type==2}}">
+        <view class="page_connect_error" >
+            <view bindtap="retryOnload">
+                <text class="iconfont icon-retry"></text>
+                <text class="ti">数据异常，点击重试</text>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{type==3}}" class="page_connect_error">
+        <!-- 页面出错 -->
+        <view class="">
+            <text class="iconfont icon-404"></text>
+            <text class="ti">{{text?text:"页面出错了"}}</text>
+        </view>
+    </view>
+    <view wx:else class="page_null">
+        <view class="wu_flex">
+            <text class="iconfont icon-nodata"></text>
+            <text>{{text?text:"暂无内容"}}</text>
+        </view>
+    </view>
+</template>
+
+<!-- 搜索框 -->
+<template name="searchInputCom">
+    <view class="">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="{{placeholderSearch}}" value="{{inputVal}}" focus="{{isFacus}}" bindblur="inputBlur" bindinput="inputTyping" bindfocus="inputFocus" bindconfirm="searchConfirm" confirm-type="搜索"/>
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">
+                <navigator open-type="navigateBack" class="back_prev">取消</navigator>
+            </view>
+        </view>
+    </view>
+</template>
+
+<!-- 搜索历史 -->
+ <template name="searchHistory">
+     <view hidden="{{!historyShowed}}" class="his_pages">
+        <scroll-view scroll-y="false" style="height:100%;">
+        <view class="searchbar-result">
+            <view class="h_list">
+                <view class="ls head">
+                    最近搜索
+                </view>
+                <block wx:if="{{searchHistoryArray.length > 0}}">
+                <view bindtap="clickSearch" data-key="{{itemName}}" class="ls text_hidden1" wx:for="{{searchHistoryArray}}" wx:key="*this" wx:for-item="itemName">
+                    {{itemName}}
+                </view>
+                </block>
+            </view>
+            <view class="clear_all_history" bindtap="clearHistory">
+                清空搜索历史
+            </view>
+        </view>
+        </scroll-view>
+    </view>
+ </template>
+<!-- 搜索筛选 -->
+<template name="searchFilter">
+    <view class="sear_filter" hidden="{{!searchFilter.isShow}}">
+        <view class="weui-flex flex-center wu_flex">
+            <view class="weui-flex__item">
+                <picker bindchange="bindFieldPickerChange" value="{{searchFilter.field.index}}" range-key="name" range="{{searchFilter.field.list}}">
+                    <view class="picker sx {{searchFilter.field.index>0?'sxa':''}}">
+                    <text>{{searchFilter.field.list[searchFilter.field.index].name}}</text>
+                    <span class="iconfont icon-sj"></span>
+                    </view>
+                </picker>
+            </view>
+            <view class="weui-flex__item">
+                <view class="select_city_org sx {{searchFilter.cityOrg.sityOrgValue!='城市/机构'?'sxa':''}}" bindtap="open_change">
+                    <text>{{searchFilter.cityOrg.sityOrgValue}}</text>
+                    <span class="iconfont icon-sj"></span>
+                </view>
+            </view>
+            <view class="weui-flex__item">
+                <picker bindchange="bindSortPickerChange" value="{{searchFilter.sort.index}}" range-key="name" range="{{searchFilter.sort.list}}">
+                    <view class="picker sx {{searchFilter.sort.index>0?'sxa':''}}">
+                    <text>{{searchFilter.sort.list[searchFilter.sort.index].name}}</text>
+                    <span class="iconfont icon-sj"></span>
+                    </view>
+                </picker>
+            </view>
+        </view>
+        
+    </view>
+    <view class="bott_picker" hidden="{{!searchFilter.cityOrg.botPickerIsShow}}">
+        <view class="picker_cons">
+            <view class="page_bgs" bindtap="closePicker"></view>
+            <view class="piker_cli">
+                <view class="bott_picker_header">
+                    <text bindtap="changeCityConcle">取消</text>
+                    <text bindtap="changeCityConfirm">确定</text>
+                </view>
+                <picker-view indicator-style="height:34px;" style="width: 100%; height:260px;"  bindchange="bindCityChange">
+                    <picker-view-column>
+                    <view wx:for="{{searchFilter.cityOrg.list}}" wx:key="*this" style="line-height:34px;text-align:center;">{{item}}</view>
+                    </picker-view-column>
+                    <picker-view-column>
+                    <view wx:for="{{searchFilter.cityOrg.actList}}" wx:key="name" style="line-height:34px;text-align:center;">{{item.name}}</view>
+                    </picker-view-column>
+                </picker-view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<!-- 需求列表 -->
+<template name="issueList">
+    <view class="issue_cons" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="uid">
+            <navigator url="/pages/user/issue/info/info?issueId={{item.issueid}}" hover-class="none"><!-- ?issueId={{item.issueid}} -->
+                <view class="messageInfo">
+                    <view class="time">
+                        <text>{{item.create_time}}</text>
+                    </view>
+                </view>
+                <view class="com_content">
+                    <view class="title">
+                        {{item.title}}
+                        <!--<text class="no_pay" wx:if="{{item.pay_status==0}}">未支付</text>-->
+                    </view>
+                    <view class="content">
+                        <text class="text_hidden3">{{item.content}}</text>
+                    </view>
+                    <view class="more">
+                        查看详情
+                    </view>
+                </view>
+            </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 电话咨询列表 -->
+<template name="userCalls">
+    <view class="calls_list_cons" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="cid">
+            <view class="messageInfo">
+                <view class="time">
+                    <text>{{item.create_time}}</text>
+                </view>
+            </view>
+            <view class="com_content">
+                 <view class="expert_mess">
+                    <view class="weui-flex flex-center">
+                        <view class="user_image box-center">
+                            <block wx:if="{{item.coverPic}}">
+                                <image src="{{item.coverPic}}" mode="aspectFit"/>
+                            </block>
+                            <block>
+                                <span class="iconfont icon-touxiang"></span>
+                            </block>
+                            <!--<image src="/images/home-question.png" mode="aspectFit"/>-->
+                        </view>
+                        <view class="weui-flex__item">
+                            <view class="placeholder">
+                                <text class="title">预约专家：{{item.expertIndexStream.name}}</text>
+                                <text class="info">{{item.expertIndexStream.title}}|{{item.expertIndexStream.org}}</text>
+                                <block wx:if="{{item.pay_status==1}}">
+                                    <block wx:if="{{item.current_status==2}}">
+                                        <text class="zt">已完成</text>
+                                    </block>
+                                    <block wx:else>
+                                        <text class="zt">状态：等待电话咨询</text>
+                                    </block>
+                                </block>
+                                <block wx:else>
+                                    <text class="zt" bindtap="toResPay" data-uid="{{item.cid}}" data-domain="{{item.expertIndexStream.domain}}">重新支付</text> 
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="content {{item.isUp?'up':'down'}}">
+                    <text class="{{item.isUp?'':'text_hidden1'}}">{{item.question}}</text>
+                    <text class="bt_more" bindtap="btMore" data-uid="{{item.cid}}">{{!item.isUp?'展开':'收起'}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</template>
+
+<!-- 支付列表 -->
+<template name="userPays">
+    <view class="pays_list_cons co_flex" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="last_time">
+            <view class="weui-flex flex-center wu_flex">
+                <view class="user_image">
+                    <block wx:if="{{item.type==1}}">
+                        <image src="/images/pp.png" mode="aspectFit"/>
+                    </block>
+                    <block wx:elif="{{item.type==2}}">
+                        <image src="/images/pi.png" mode="aspectFit"/>
+                    </block>
+                    <block wx:else>
+                        <image src="/images/pq.png" mode="aspectFit"/>
+                    </block>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                        <block wx:if="{{item.type==1}}">
+                            <view class="title">电话咨询</view>
+                        </block>
+                        <block wx:elif="{{item.type==2}}">
+                            <view class="title">发布项目</view>
+                        </block>
+                        <block wx:else>
+                            <view class="title">付费提问</view>
+                        </block>
+                        <view class="info">{{item.last_time}}</view>
+                    </view>
+                </view>
+                <view class="box-center ri_text">
+                    {{item.price}}元
+                </view>
+            </view>
+        </block>
+    </view>
+</template>
+
+<!-- 消息列表 -->
+<template name="messageList">
+    <view class="mes_list" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="msgid">
+            <view class="messageInfo">
+                <view class="time">
+                    <text>{{item.create_time}}</text>
+                </view>
+                <view class="infos">
+                   
+                    <view class="title">
+                        {{item.title}}
+                    </view>
+                    <view class="infoMore">
+                        {{item.content}}
+                    </view>
+                    <navigator url="/pages/user/issue/info/info?issueId={{item.item_id}}" redirect hover-class="none" class="more_link" wx:if="{{item.type==2}}">
+                        查看详情
+                    </navigator>
+                </view>
+            </view>
+        </block>
+    </view>
+</template>
+<!-- 个人中心 问题列表 -->
+<template name="userQuestionList">
+    <view class="user_question_list" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="uid">
+            <navigator url="/pages/user/question/info/info?qid={{item.id}}" hover-class="none">
+                <view class="messageInfo">
+                    <view class="time">
+                        <text>{{item.createTime}}</text>
+                    </view>
+                </view>
+                <view class="com_content">
+                    <view class="title">
+                        {{item.title}}
+                    </view>
+                    <view class="push">
+                        问题已推送{{item.pushCount}}位专家|{{item.answerCount}}条专家回复
+                    </view>
+                    <view class="content">
+                        <text class="text_hidden3">{{item.content}}</text>
+                    </view>
+                    <view class="more">
+                        查看详情
+                    </view>
+                </view>
+            </navigator>
+        </block>
+    </view>
+</template>
+
+<!-- 回复信息 -->
+<template name="replyList">
+    <view class="reply_list" wx:if="{{list.length>0}}">
+        <view class="ex_re_li" wx:for="{{list}}" wx:key="pid">
+            <navigator url="/pages/user/expert/info/info?expertId={{item.expertIndexStream.uid}}" hover-class="none" class="expert_mess">
+                <view class="weui-flex flex-center">
+                    <view class="user_image box-center">
+                        <image src="/images/home-question.png" mode="aspectFit"/>
+                    </view>
+                    <view class="weui-flex__item">
+                        <view class="placeholder">
+                            <text class="title">{{item.expertIndexStream.name}} {{item.expertIndexStream.org}}{{item.expertIndexStream.title}}</text>
+                            <text class="info">{{item.expertIndexStream.domain}}</text>
+                            <text class="info">回复时间：{{item.create_time}}</text>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+            <view class="com_content">
+                <view class="content">
+                    <text class="{{item.moreFlag?'':'text_hidden3'}}">{{item.content}}</text>
+                </view>
+                <view class="more" bindtap="moreReply" data-id="{{item.pid}}">
+                    {{item.moreFlag?'收起':'展开'}}详情
+                </view>
+            </view>
+        </view>
+    </view>
+    <block wx:else>
+        <view class="no_reply">
+            一 {{replyTip}} 一
+        </view>
+    </block>
+</template>
+

@@ -1,0 +1,107 @@
+<!--index.wxml-->
+<import src="../../common/template.wxml"/>
+<template is="modelLogin" data="{{...modelLogin}}"/>
+<view class="index_cons pull_page_bottom search_fixed">
+  <view class="weui-search-bar">
+    <navigator url="../search/level/level-search?focus=true" hover-class="none" class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <text class="se_in">搜索</text>
+        <!--
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" disabled="true" placeholder-style="color:#b2b2b2;"/>
+        -->
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+    </navigator>
+    <view class="weui-search-bar__cancel-btn">
+      <navigator url="../message/index" hover-class="none">
+        <view class="header_message">
+            <image src="/images/message.png" mode="aspectFit"/>
+            <text class="number weui-badge" wx:if="{{unread>0}}">{{unread}}</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  
+  <view class="index_nav_lis pages_whilt">
+    <!--<view hover-class="none" data-url="../user/question/form/form" bindtap="toLoginPage" class="li">
+      <view class="weui-flex flex-center wu_flex">
+        <view class="box-center">
+          <image src="/images/home-issue.png" mode="aspectFit" class="h_icons"/>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <text class="title">问专家<text class="te_icon">免费</text></text>
+            <text class="info">大数据精准匹配专家，解答疑难</text>
+          </view>
+        </view>
+        <view class="box-center jt_icon"><span class="iconfont icon-jiantou"></span></view>
+      </view>
+    </view>-->
+    <!--bindtap="btnNewIssue"-->
+    <view class="li"  data-url="../user/issue/form/form" bindtap="toLoginPage">
+      <view class="weui-flex flex-center wu_flex">
+        <view class="box-center"><image src="/images/home-question.png" mode="aspectFit" class="h_icons" /></view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <text class="title">发布需求<text class="te_icon">免费</text></text>
+            <text class="info">大数据智能匹配专家</text>
+          </view>
+        </view>
+        <view class="jt_icon"><span class="iconfont icon-jiantou"></span></view>
+      </view>
+    </view>
+    <navigator hover-class="none" url="../search/level/level-search" class="li">
+      <view class="weui-flex flex-center wu_flex">
+        <view class="box-center"><image src="/images/home-expert.png" mode="aspectFit" class="h_icons" /></view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <text class="title">找专家</text>
+            <text class="info">搜领域专家，精准对接</text>
+          </view>
+        </view>
+        <view class="jt_icon"><span class="iconfont icon-jiantou"></span></view>
+      </view>
+    </navigator>
+  </view>
+  <view animation="{{animationData}}" class="modal_cons modal_issue flex-center" hidden="{{!modalShowed}}">
+    <view class="modal">
+        <view class="close" bindtap="closeModal">X</view>
+        <view>
+          科学家在线将为您安排4位专家，进行每位专家时长10分钟的三方通话，为您提交的项目提供咨询和对接。
+        </view>
+        <view>*该服务将收取200元信息服务费</view>
+        <navigator hover-class="none" url="../user/issue/issue">发布项目</navigator>
+    </view>
+  </view>
+  <view class="hei_line"></view>
+  <!-- 轮播广告 -->
+  <template is="swiper" data="{{...swiperList}}"/>
+  <view class="hei_line"></view>
+  <!-- 推荐专家 -->
+  <!--<navigator hover-class="none" url="../switchcity/switchcity">选择城市</navigator>-->
+  <template is="navHead" data="{{name:'推荐专家'}}"/>
+  <template is="expertList" data="{{...pushData.expert}}"/>
+  <block wx:if="{{footLoading.isLoading}}">
+      <template is="footLoading" data="{{footLoading:footLoading}}"/>
+  </block>
+  <block wx:else>
+      <view class="foot_more">
+        <navigator url="/pages/search/level/level-search?type=e" hover-class="none" class='more_expert'>
+          全部专家
+        </navigator>
+      </view>
+  </block>
+</view>
+<template is="tabBar" data="{{tabbarInit}}"/>
+<!--<view class="container">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>-->

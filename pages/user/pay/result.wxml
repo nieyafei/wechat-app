@@ -1,0 +1,21 @@
+<!--result.wxml-->
+<view class="pay_result">
+    <view class="tips">
+        <image src="/images/succ.png" />
+        <text>提交成功</text>
+    </view>
+    <view class="content">
+        <block wx:if="{{type==0 || type==1}}">
+            <!--<text>科学家在线已为您匹配 {{type==0?"300":"1000"}} 位 「{{domain}}」领域专家，您的问题将以短信或邮件的形式推送给专家，请耐心等待专家回复。</text>-->
+            <text>感谢您使用‘科学家在线’服务，我们会尽快与您联系。进一步核实需求后，安排专家与您对接。</text>
+        </block>
+        <block wx:elif="{{type==2}}">
+            <text>感谢您使用‘科学家在线’服务，我们会尽快与您联系。进一步核实需求后，匹配领域专家与您对接。</text>
+        </block>
+        <block wx:elif="{{type==3}}">
+            <text>感谢您使用「科学家在线」服务。科学家在线业务员将在 24小时 内与您联系，充分沟通确认后，为您安排与专家时长为10分钟三方通话。</text>
+        </block>
+
+    </view>
+    <navigator url="/pages/index/index" open-type="reLaunch" hover-class="none" class="btn">确定</navigator>    
+</view>

@@ -1,0 +1,13 @@
+/* index.wxss */
+page{background-color: #fff;}
+.message_cons{padding-left: 14px;}
+.message_cons .mess_left{position: relative;}
+.message_cons .mess_left image{width:40px;height:40px;vertical-align: middle;}
+.message_cons .weui-flex{
+    padding:14px 14px 14px 0;border-bottom: 1px solid #e5e5e5;line-height: 1.2;
+}
+.message_cons .weui-flex .weui-flex__item{padding-left: 10px;}
+.message_cons .title{color: #1a1a1a;font-size: 16px;}
+.message_cons .title text{color: #aaaaaa;float: right;font-size: 14px;display: block;}
+.m_info{color: #aaaaaa;font-size: 14px;}
+.weui-badge{right:-8px;}

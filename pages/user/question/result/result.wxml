@@ -1,0 +1,23 @@
+<!--result.wxml-->
+<import src="../../../../common/template.wxml"/>
+<view class="result_cons fix_bot_btn">
+    <view class="title_header">
+        科学家已为您匹配<text>3</text>位
+        <text>“{{domain}}”</text>领域专家，您的问题将以短信或邮件的形式推送给专家，请耐心等待解答。
+        <view class="infos">
+            匹配3位专家，用时0.000035秒
+        </view>
+    </view>
+    <template is="expertList" data="{{...pushData.expert}}"/>
+    <view class="btn_sub">
+        <navigator url="/pages/user/question/push/push?qid={{questionId}}&domain={{domain}}" hover-class="none" class="btn_left">
+            推送给更多的专家
+        </navigator>
+        <navigator url="/pages/user/question/info/info?qid={{questionId}}" hover-class="none" class="btn_right">
+            <text class="wi_line"></text>
+            查看问题
+        </navigator>
+    </view>
+</view>
+
+

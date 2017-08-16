@@ -1,0 +1,14 @@
+<!--list.wxml-->
+<import src="../../../../common/template.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}" />
+<view wx:if="{{!pageOther.isShow}}">
+    <!-- 正文 -->
+    <view class="calls_cons">
+        <template is="userCalls" data="{{...pushData.other}}" />
+        <template is="footLoading" data="{{footLoading:footLoading}}"/>
+    </view>
+</view>
+<view wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</view>

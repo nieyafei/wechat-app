@@ -1,0 +1,49 @@
+<!--push.wxml-->
+<import src="../../../../common/template.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}" />
+<block wx:if="{{!pageOther.isShow}}">
+<view class="push_cons fix_bot_btn">
+    
+    <view class="more_push_cons">
+        <view class="title">
+            向更多专家提问，可提升问题回复的可能性。
+        </view>
+        <view class="push_list">
+            <view class="con {{payType==0?'active':''}}" bindtap="changePayType" data-type="0">
+                <view class="left">
+                    50元
+                </view>
+                <view class="right">
+                    邮件/短信，推送问题到
+                    <text>300</text>
+                    位相关领域匹配专家
+                </view>
+            </view>
+            <view class="con {{payType==1?'active':''}}" bindtap="changePayType" data-type="1">
+                <view class="left">
+                    100元
+                </view>
+                <view class="right">
+                    邮件/短信，推送问题到
+                    <text>1000</text>
+                    位相关领域匹配专家
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="btn_sub">
+        <view class="btn_left" bindtap="submitPay">
+            支付并推送问题
+        </view>
+        <button class="btn_right" hover-class="none" open-type="contact">
+            <text class="wi_line"></text>
+            客服
+        </button>
+    </view>
+</view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>

@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<import src="../../common/template.wxml"/>
+<block wx:if="{{!pageOther.isShow}}">
+    <view class="message_cons">
+        <navigator url="/pages/message/system/system" class="" hover-class="none">
+            <view class="weui-flex flex-center">
+                <view class="mess_left">
+                    <image src="/images/system.png" class='lgim'/>
+                    <view class="number weui-badge" wx:if="{{message.sysMsgCount>0}}">
+                        {{message.sysMsgCount}}
+                    </view>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                        <text class="title">系统消息<text>{{message.sysMessage.create_time}}</text></text>
+                        <text class="m_info text_hidden1">{{message.sysMessage.content}}</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+        <navigator url="/pages/message/service/service" class="" hover-class="none">
+            <view class="weui-flex flex-center">
+                <view class="mess_left">
+                    <image src="/images/service.png" class='lgim'/>
+                    <view class="number weui-badge" wx:if="{{message.personalMsgCount>0}}">
+                        {{message.personalMsgCount}}
+                    </view>
+                </view>
+                <view class="weui-flex__item">
+                    <view class="placeholder">
+                        <text class="title">服务通知<text>{{message.personalMessage.create_time}}</text></text>
+                        <text class="m_info text_hidden1">{{message.personalMessage.content}}</text>
+                    </view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>
+
+

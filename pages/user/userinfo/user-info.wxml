@@ -1,0 +1,41 @@
+<!--user-info.wxml-->
+<import src="../../../common/template.wxml"/>
+<template is="showToast" data="{{showToast: showToast}}" />
+<view class="user_info_form">
+    <view class="image">
+        <image src="{{userInfo.avatarUrl}}" class="pro_images"/>
+    </view>
+    <!-- 表单 -->
+    <view class="form_cons">
+        <view class="weui-cells weui-cells_after-title form_input no_bor_bottom">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">姓名</view>
+                </view>
+                <view class="weui-cell__bd pos_clear">
+                    <input class="weui-input" placeholder="请输入姓名" bindinput="inputName" value="{{invalVlaue}}" placeholder-style="color:#b2b2b2;" bindblur="inputBlur" bindfocus="inputFocus"/>
+                    <view bindtap="clearInput" hidden="{{!isClearShow}}" class="iconfont icon-chazi"></view>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">企业机构</view>
+                </view>
+                <view class="weui-cell__bd pos_clear">
+                    <input class="weui-input" placeholder="请输入公司名称" bindinput="inputCompany" value="{{invalVlaue2}}" placeholder-style="color:#b2b2b2;" bindblur="inputBlur2" bindfocus="inputFocus2"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">职位</view>
+                </view>
+                <view class="weui-cell__bd pos_clear">
+                    <input class="weui-input" placeholder="请输入职位" bindinput="inputPosition" value="{{invalVlaue3}}" placeholder-style="color:#b2b2b2;" bindblur="inputBlur3" bindfocus="inputFocus3"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="form_btn">
+        <view bindtap="submitForm" class="btn_sub">保存</view>
+    </view>
+</view>

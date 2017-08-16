@@ -1,0 +1,23 @@
+/* push.wxss */
+.push_cons .more_push_cons{padding:30px 14px}
+.push_cons .more_push_cons .title{font-size: 16px;color: #b2b2b2;}
+.push_list .con{
+    padding: 20px 0;border:1px solid #1f6b9b;border-radius:6px;-webkit-border-radius:6px;display: table;margin-top: 15px;
+}
+.push_list .con.active{background-color: #1f6b9b;}
+.push_list .con .left{
+    display: table-cell;
+    width: 25%;text-align: center;color: #1f6b9b;border-right:1px solid #1f6b9b;font-size:24px;vertical-align: middle;
+}
+
+.push_list .con.active .left{
+    color: #fb7352;border-right: 1px solid #fff;
+}
+
+.push_list .con .right{
+    display: table-cell;width: 75%;padding: 10px 20px;color: #1a1a1a;font-size: 16px;
+}
+.push_list .con .right text{color: #fb7352;}
+.push_list .con.active .right{
+    color: #fff;
+}

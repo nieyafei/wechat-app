@@ -1,0 +1,19 @@
+/* level-search.wxss */
+.sear_filter{position: fixed;z-index:8;width: 100%;background-color: #fff;top:48px;left:0;border-bottom: 1px solid #ededed}
+.sear_filter .sx{padding:10px 0;color: #1a1a1a;font-size: 14px;display: block;text-align: center;white-space:nowrap}
+.sear_filter .sx .iconfont{font-size: 10px;color:#b2b2b2;margin-left:3px;}
+.sear_filter .sx.sxa,.sear_filter .sx.sxa .iconfont{color:#1f6b9b;}
+.sear_filter .weui-flex__item{width: 33.3333%}
+.sear_filter .weui-flex__item .sx text{max-width:80%;overflow: hidden;display: inline-block;vertical-align: middle;}
+
+.bott_picker{position:fixed;bottom:0;left:0;width: 100%;z-index:12;height: 100%;}
+.picker_cons{position:relative;height: 100%;width: 100%;}
+.picker_cons .page_bgs{position: absolute;top:0;left:0;z-index:13;width: 100%;height:100%;background-color: rgba(0, 0, 0, 0.6)}
+.picker_cons .piker_cli{position: absolute;z-index:14;width: 100%;left:0;bottom: 0;background-color: #fff;}
+.picker_cons .piker_cli .bott_picker_header{width:100%;background-color: #fbf9fe;}
+.picker_cons .piker_cli .bott_picker_header text{display: inline-block;padding: 8px 14px;color:#586c94;}
+.picker_cons .piker_cli .bott_picker_header text:last-child{float: right;color: #1f6b9b;}
+
+.fots{height:46px;}
+/*.page_rela{position: relative;}
+.expert_foot_tips{position: absolute;width: 100%;left:0;bottom:0;z-index: 8;}*/

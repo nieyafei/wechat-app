@@ -1,0 +1,25 @@
+<!--info.wxml-->
+<import src="../../../../common/template.wxml"/>
+<block wx:if="{{!pageOther.isShow}}">
+<view>
+    <view class="com_content">
+        <view class="title">
+            {{question.title}}
+        </view>
+        <view class="content">
+            发布时间：{{question.create_time}}
+        </view>
+        <view class="content">
+            <text class="">{{question.content}}</text>
+        </view>
+        <view class="push">
+            问题已推送{{question.expertPushed}}位专家|{{question.answerCount}}条专家回复
+        </view>
+    </view>
+    <template is="replyList" data="{{...pushData.other,replyTip}}" />
+</view>
+</block>
+<block wx:else>
+    <!-- 空页面or未登录 -->
+    <template is="pageOther" data="{{...pageOther}}"/>    
+</block>
